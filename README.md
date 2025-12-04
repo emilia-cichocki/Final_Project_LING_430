@@ -44,7 +44,6 @@ A total of 24 features were selected as relevant for the classification analysis
 ### Dependencies
 
 
-
 hoffman code: [text](https://osf.io/8atfn/overview) -> need to explain how coherence was calculated
 frequency: https://www.ugent.be/pp/experimentele-psychologie/en/research/documents/subtlexus/brysbaertnew.pdf
 semantic diversity: https://link.springer.com/article/10.3758/s13428-012-0278-x
