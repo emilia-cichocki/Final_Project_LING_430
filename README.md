@@ -2,10 +2,10 @@
 This repository contains the narrative discourse data, coherence scores, and scripts for the LING 430 (Computational Linguistics) final project. The project aims to utilize computational linguistic techniques (i.e., microlinguistic and macrolinguistic feature derivation) and simple machine learning to predict coherence scores for narrative discourse transcripts in a manner that correlates with human assessments.
 
 ### Project Structure
-This project uses transcripts from the HANNA and CoheSentia corpuses as samples of narrative discourse. These datasets collectively contain around 1500 human or large-language model generated stories, each approximately a paragraph long, and which have been scored by human raters for global or holistic coherence on a 1 - 5 scale. This repository contains notebooks for cleaning the raw narrative discourse data (referred to as transcripts), ***processing and formatting it in a variety of ways for different features, and calculating a set of linguistic features for each transcript. Finally, it constructs a random forest classifier to attempt to classify a transcript into coherence scores on the same scale. The objective of this project is to determine whether this set of features can be realistically used to assess narrative discourse in a manner that is similar to human raters.***
+This project uses transcripts from the HANNA and CoheSentia corpuses as samples of narrative discourse. These datasets collectively contain around 1500 human or large-language model generated stories, each approximately a paragraph long, and which have been scored by human raters for global or holistic coherence on a 1 - 5 scale. This repository contains notebooks for cleaning the raw narrative discourse data (referred to as transcripts), processing and formatting them in a variety of ways for feature analysis, and calculating a set of linguistic features for each transcript. Finally, it constructs a random forest classifier to attempt to classify test transcripts into coherence scores using the equivalent scale. In doing so, it aims to determine whether the given feature set is appropriate for automated assessment of narrative discourse coherence that can reflect the decisions of human scorers.
 
 ### Features
-A total of 24 features were selected as relevant for the classification analysis on the assumption that they are related to judgments of coherence and should thus be accurate predictors of scores. The features and any corresponding theoretical justifications are listed below.
+A total of 24 features were selected as relevant for the classification analysis on the assumption that they are related to judgments of coherence and should thus be accurate predictors of scores. ***explain why 24 - 10 features per smallest class, minus the outlier 1 class***. The features and any corresponding theoretical justifications are listed below.
 - *Number of Words*: total number of words in a transcript
 - *Part-of-Speech Proportions*: number of words tagged as a particular part of speech (nouns, pronouns, verbs, coordinating conjunctions, subordinating conjunctions) divided by total number of words
     - **finish this for why!!!!**
@@ -26,6 +26,7 @@ A total of 24 features were selected as relevant for the classification analysis
 - *Number of Utterances*: total number of utterances in a transcript
 - *Mean Words per Utterance*: mean number of words per utterance in a transcript
 - *Local coherence*: **derived from Hoffman code**
+- dependency_distance_mean	prop_adjacent_dependency_relation_mean	first_order_coherence	second_order_coherence
 
 ### Workflow
 1. [transcript_preprocessing.ipynb](transcript_preprocessing.ipynb)
