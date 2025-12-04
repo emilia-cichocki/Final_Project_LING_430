@@ -37,7 +37,7 @@ A total of 24 features were selected as relevant for the classification analysis
 3. [linguistic_feature_calculation.ipynb](linguistic_feature_calculation.ipynb)  
     This notebook calculates a large set of [linguistic features](/linguistic_features), including the 24 used in classification, given the processed and formatted transcript files
 4. [feature_processing.ipynb](feature_processing.ipynb)  
-    This notebook takes the multiple files containing feature data produced by the prior step, cleans, and z-scores the data to produce an [output file](/linguistic_features/linguistic_features_final.csv) with the 24 normalized classification features
+    This notebook takes the multiple files containing feature data produced by the prior step, cleans, and z-scores the data to produce an [output file](/linguistic_features/linguistic_feature_set.csv) with the 24 normalized classification features
 5. [classification.ipynb](classification.ipynb)
     This notebook uses the final feature data to run and fit a random forest classifier, the performance of which is then analyzed for various metrics. An explanation of the model performance and potential areas of improvement is included.
 
