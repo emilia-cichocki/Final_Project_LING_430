@@ -29,11 +29,17 @@ A total of 24 features were selected as relevant for the classification analysis
 - dependency_distance_mean	prop_adjacent_dependency_relation_mean	first_order_coherence	second_order_coherence
 
 ### Workflow
-1. [transcript_preprocessing.ipynb](transcript_preprocessing.ipynb)
-2. [transcript_formatting.ipynb](transcript_formatting.ipynb)
-3. [linguistic_feature_calculation.ipynb](linguistic_feature_calculation.ipynb)
-4. [feature_processing.ipynb](feature_processing.ipynb)
+***CHANGE THIS NAME***
+1. [transcript_preprocessing.ipynb](transcript_preprocessing.ipynb)  
+    This notebook preprocesses the transcripts from [HANNA](/raw_data/hanna_stories_annotations.csv) and [CoheSentia](/raw_data/cohesentia_stories_1.json) to produce [a file](/processed_data/transcripts.csv) of cleaned and truncated transcripts
+2. [transcript_formatting.ipynb](transcript_formatting.ipynb)  
+    This notebook takes the cleaned but unformatted transcripts from the step above, and produces [several files](/processed_data) of transcripts reformatted with various conventions (corrected punctuation, no punctuation, segmented by utterance boundaries based on punctuation, or single-word segmentation for local coherence)
+3. [linguistic_feature_calculation.ipynb](linguistic_feature_calculation.ipynb)  
+    This notebook calculates a large set of [linguistic features](/linguistic_features), including the 24 used in classification, given the processed and formatted transcript files
+4. [feature_processing.ipynb](feature_processing.ipynb)  
+    This notebook takes the multiple files containing feature data produced by the prior step, cleans, and z-scores the data to produce an [output file](/linguistic_features/linguistic_features_final.csv) with the 24 normalized classification features
 5. [classification.ipynb](classification.ipynb)
+    This notebook uses the final feature data to run and fit a random forest classifier, the performance of which is then analyzed for various metrics. An explanation of the model performance and potential areas of improvement is included.
 
 ### Dependencies
 
