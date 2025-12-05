@@ -6,29 +6,29 @@ This project uses transcripts from the HANNA and CoheSentia corpuses as samples 
 
 ### Features
 # TODO: update the features like this
-A total of ***24*** features were selected as relevant for the classification analysis on the assumption that they are related to judgments of coherence and should thus be accurate predictors of scores. ***explain why 24 - 10 features per smallest class, minus the outlier 1 class***. The features and any corresponding theoretical justifications are listed below.
-- *Number of Words*: total number of words in a transcript. Longer transcripts may be more difficult to understand, while very short transcripts may not be sufficient to produce a coherent narrative.
-- *Part-of-Speech Proportions*: number of words tagged as a particular part of speech (pronouns, coordinating conjunctions, subordinating conjunctions) divided by total number of words. Both the proportion of pronouns and of conjunctions (coordinating and subordinating) have been related to comprehension difficulty (Graesser et al., 2004), which is thought to influence the perceived coherence of a text. Proportion code is based on an English linguistic feature pipeline developed by ***Pugalenthi, 2025***
-- *Open-Closed Class Ratio*: ratio of number of open-class words (nouns, verbs, adjectives, and adverbs) to number of closed-class words (adpositions, auxiliaries, coordinating and subordinating conjunctions, determiners, interjections, numerals, particles, and pronouns). A higher open-closed class ratio indicates a greater proportion of content-carrying words compared to grammatical indicators, which may affect relevance and thus coherence (Maimon & Tsarfaty, 2025). Open-closed class ratio code is based on an English linguistic feature pipeline (***Pugalenthi, 2025***)
-- *Type-Token Ratio*: number of unique words divided by total number of words. ***finish this***
-- *Propositional Density*: number of words introducing or carrying ideas (adjectives, adverbs, adpositions, coordinating and subordinating conjunctions, verbs) divided by total number of words ***finish this***
+A total of 22 features were selected as relevant for the classification analysis on the assumption that they are related to judgments of coherence and should thus be accurate predictors of scores. Having approximately 20 features allowed for over 10 independent samples from each class of coherence scores per feature (with the exception of class 1, which only had 54 instances out of 1532 transcripts), which increased robustness of the classification model. The features and any corresponding theoretical justifications are listed below.
+- *Number of Words*: total number of words in a transcript. Longer transcripts may be more difficult to understand, while very short transcripts may not be sufficient to produce a coherent narrative
+- *Part-of-Speech Proportions*: number of words tagged as a particular part of speech (pronouns, coordinating conjunctions, subordinating conjunctions) divided by total number of words. Both the proportion of pronouns and of conjunctions (coordinating and subordinating) have been related to comprehension difficulty (Graesser et al., 2004), which is thought to influence the perceived coherence of a text. Proportion code is based on a pre-existing English linguistic feature pipeline (Pugalenthi, 2025), calculated using SpaCy (Honnibal & Johnson, 2015)
+- *Open-Closed Class Ratio*: ratio of number of open-class words (nouns, verbs, adjectives, and adverbs) to number of closed-class words (adpositions, auxiliaries, coordinating and subordinating conjunctions, determiners, interjections, numerals, particles, and pronouns). A higher open-closed class ratio indicates a greater proportion of content-carrying words compared to grammatical indicators, which may affect relevance and thus coherence (Maimon & Tsarfaty, 2025). Open-closed class ratio code is based on a pre-existing English linguistic feature pipeline (Pugalenthi, 2025), calculated using SpaCy (Honnibal & Johnson, 2015)
+- *Type-Token Ratio*: number of unique words divided by total number of words. Type-token ratio is a measure of lexical diversity and language quality, which might influence coherence through readability and information content. Type-token ratio code is based on a pre-existing English linguistic feature pipeline (Pugalenthi, 2025)
+- *Propositional Density*: number of words introducing or carrying ideas (adjectives, adverbs, adpositions, coordinating and subordinating conjunctions, verbs) divided by total number of words. Propositional density is intended to be a measure of the degree of provided information, which may relate to structuring of a retell and therefore coherence. Propositional density is based on a pre-existing English linguistic feature pipeline (Pugalenthi, 2025), calculated using SpaCy (Honnibal & Johnson, 2015)
 - *Number of Logical Operators*: total number of logical operators (and, or, not, if...then) in a transcript. A higher count of logical operators correlates with greater analytical density and cognitive demand (Graesser et al., 2004), which may influence perceptions of coherence
-- *Word Frequency Mean*: **finish this!!!** The values for word frequency were acquired from ***???***; the word frequency mean code is based on a pre-existing linguistic feature pipeline (***Pugalenthi, 2025***)
-- *Semantic Diversity*: quantifies the number of contexts a word can appear in, averaged across all words in a transcript. Words with a higher semantic diversity can be ***used in more distinct contexts***, which might ***challenge processing and affect coherence***. The values for semantic diversity were acquired from Hoffman et al., 2012; the semantic diversity code is based on a pre-existing linguistic feature pipeline (***Pugalenthi, 2025***)
-- *Semantic Thematic Similarity*: the average cosine similarity between each pair of words in a transcript; quantifies the degree to which a narrative contains words that are similar to one another, or have high co-occurrence ***citation***. Narratives with lower semantic thematic similarity provide more diverse information ***citation***, but may appear less coherent. Semantic thematic similarity code is based on a pre-existing English linguistic feature pipeline (***Pugalenthi, 2025***) using word2vec embeddings ***citation***
-- *Surprisal*: degree to which a word is unexpected based on prior words, averaged across all words in a transcript. Surprisal code is based on a pre-existing English linguistic feature pipeline (***Pugalenthi, 2025***) using the GPT2 model from minicons ***citation***
-- *Local Co-Reference Cohesion*: a quantification of the proportion of adjacent utterance pairs in a text that share a common noun (noun co-reference). The formula for local cohesion is ***finish this!!!*** (Graesser et al., 2004). Cohesion has been identified as a necessary feature for coherence (Maimon & Tsarfaty, 2025)
-- *Global Co-Reference Cohesion*: a quantification of the proportion of all utterance pairs in a text that share a common noun. The formula for global coherence is ***finish this!!!*** (Graesser et al., 2004); this metric is correlated with local cohesion, but provides a more holistic measure of noun co-reference
-- *Constituent Proportion*: number of high-level or sentence-level constituents (defined as a noun phrase, verb phrase, subordinate clause, or prepositional phrase) divided by total number of words. ***related to syntactic complexity, which is assumed to affect coherence ratings because why wouldn't it*** (Graesser et al., 2004) 
-- *Mean Noun Phrase Length*: the average length of noun phrases in a transcript, quantifying the number of modifiers and therefore complexity of the phrase. Noun phrase length has been related to syntactic complexity (Graesser et al., 2004), which ***should affect coherence***
-- *Mean Verb Phrase Length*: the average length of verb phrases in a transcript, quantifying the complexity of the phrase. As in noun phrases, verb phrase length is related to syntactic complexity (Graesser et al., 2004), which is thought to impact coherence
-- *Number of Utterances*: total number of utterances in a transcript ***finish this***
-- *Mean Words per Utterance*: mean number of words per utterance in a transcript ***finish this***
-- *Local coherence*: **derived from Hoffman code** Local coherence has been used as an automated measure of retell coherence (**hoffman citation**), so it is expected to be correlated with human ratings
-- *Dependency Distance Mean*: the distance between a word and its head word (***https://arxiv.org/pdf/2301.02057***), averaged across all words in a transcript. Transcripts with a higher dependency distance have ***more distance between words and their head words***, which may ***lower coherence/higher cognitive demand***
-- *Adjacent Dependency Relation Mean*: 
-- *First Order Coherence*: 
-- *Second Order Coherence*: 
+- *Word Frequency Mean*: the frequency of a given word in a large corpus of English language data, scaled with a logarithm function (Graesser et al., 2004) and averaged across all words in a transcript. A high proportion of low-frequency words may limit text comprehension and impact coherence judgments. Word frequency values were acquired from Brysbaert (2009); the word frequency mean code is based on a pre-existing linguistic feature pipeline (Pugalenthi, 2025)
+- *Semantic Diversity*: quantifies the number of contexts a word can appear in, averaged across all words in a transcript. Words with a higher semantic diversity are generally less concrete and can be used in a variety of context, which might place additional demands on text comprehension and influence coherence scores. The values for semantic diversity were acquired from Hoffman et al., 2013; the semantic diversity code is based on a pre-existing linguistic feature pipeline (Pugalenthi, 2025)
+- *Semantic Thematic Similarity*: the average cosine similarity between each pair of words in a transcript; quantifies the degree to which a narrative contains words that are similar to one another, or have high co-occurrence. Narratives with lower semantic thematic similarity provide more diverse information, but may appear more disjoint and less coherent (Litovsky et al., 2022). Semantic thematic similarity code is based on a pre-existing English linguistic feature pipeline (Pugalenthi, 2025) using word2vec embeddings (Mikolov et al., 2013)
+- *Surprisal*: degree to which a word is unexpected based on prior words, averaged across all words in a transcript. High surprisal values may indicate lexical or syntactic abnormalities (Cong et al., 2024), while very low surprisal suggest a lack of new information, both of which may affect perceived coherence of a narrative (Rezaii et al., 2023). Surprisal code is based on a pre-existing English linguistic feature pipeline (Pugalenthi, 2025) using the GPT2 model from minicons (Misra, 2022)
+- *Local Co-Reference Cohesion*: a quantification of the proportion of adjacent utterance pairs in a text that share at least one common noun (noun co-reference; Graesser et al., 2004). Cohesion has been identified as a necessary feature for coherence (Maimon & Tsarfaty, 2025)
+- *Global Co-Reference Cohesion*: a quantification of the proportion of all utterance pairs in a text that share at least one noun (Graesser et al., 2004); this metric is correlated with local cohesion, but provides a more holistic measure of noun co-reference
+- *Constituent Proportion*: number of high-level or sentence-level constituents (defined as a noun phrase, verb phrase, subordinate clause, or prepositional phrase) divided by total number of words. This is a metric of syntactic complexity, which is thought to be correlated with coherence (Fernández, 2011); higher scores indicating more difficult syntactic structure (Graesser et al., 2004). Constituents were defined and parsed using the Stanza library (Qi et al., 2020)
+- *Mean Noun Phrase Length*: the average length of noun phrases in a transcript, quantifying the number of modifiers and therefore complexity of the phrase. Noun phrase length has been related to syntactic complexity (Graesser et al., 2004), which in turn is thought to impact coherence. Noun phrases were defined using the Stanza library (Qi et al., 2020)
+- *Mean Verb Phrase Length*: the average length of verb phrases in a transcript, quantifying the complexity of the phrase. As with noun phrases, verb phrase length is related to syntactic complexity (Graesser et al., 2004). Verb phrases were defined using the Stanza library (Qi et al., 2020)
+- *Local coherence*: the cosine similarity between embedding vectors for adjacent 20-word sliding windows generated using latent semantic analysis, averaged across all windows in a transcript (Hoffman et al., 2018). Local coherence has been used as an automated measure of retell coherence, so it is expected to be correlated with human ratings. The [R code](https://osf.io/8atfn/overview) from Hoffman et al. (2018) was used to calculate local coherence scores for each transcript, the results of which are in the [coherence results file](linguistic_features/coherence_results.csv) 
+- *Dependency Distance Mean*: the distance between a word and its head word, averaged across all words in a transcript (Hansen et al., 2023). Transcripts with a higher dependency distance have more distance between words and their heads, which may result in higher cognitive processing demand and affect coherence ratings. Dependency distance and the remaining features were calculated automatically using the textdescriptives library (Hansen et al., 2023)
+- *Adjacent Dependency Relation Mean*: the proportion of dependency relationships in a transcript where the head word and dependent word are adjacent to one another (Hansen et al., 2023); a measure of readability and syntactic complexity
+- *First Order Coherence*: the average cosine similarity between each adjacent sentence in a transcript (Hansen et al., 2023), calculated by the textdescriptives library using SpaCy. Because this is an automated measure of coherence, it should be related to human assessments of coherence
+- *Second Order Coherence*: the average cosine similarity between each pair of sentences that are two sentences apart (Hansen et al., 2023), calculated by the textdescriptives library using SpaCy. As with first-order coherence, this is expected to be related to human assessments of coherence, capturing longer-distance relationships in the text
+
+**citation: from https://hlasse.github.io/TextDescriptives/coherence.html:**
 
 ### Order of Data Processing
 1. [transcript_preprocessing.ipynb](transcript_preprocessing.ipynb)  
@@ -42,19 +42,36 @@ A total of ***24*** features were selected as relevant for the classification an
 5. [classification.ipynb](classification.ipynb)
     This notebook uses the final feature data to run and fit a random forest classifier, the performance of which is then analyzed for various metrics. An explanation of the model performance and potential areas of improvement is included
 
-### Dependencies
-
-TODO - maybe add examples for the linguistic features?
+### Project Reflection
+Answers to the project reflection questions can be found in [this file](Reflection.md).
 
 ### Citations
-# TODO: CITE KESHA'S CODE
+Brysbaert, M., & New, B. (2009). Moving beyond Kucera and Francis: a critical evaluation of current word frequency norms and the introduction of a new and improved word frequency measure for American English. *Behavior research methods*, 41(4), 977–990. https://doi.org/10.3758/BRM.41.4.977  
 
-hoffman code: [text](https://osf.io/8atfn/overview) -> need to explain how coherence was calculated
-frequency: https://www.ugent.be/pp/experimentele-psychologie/en/research/documents/subtlexus/brysbaertnew.pdf
-semantic diversity: https://link.springer.com/article/10.3758/s13428-012-0278-x
-surprisal: https://pypi.org/project/surprisal/
-cite word2vec! google model
-minicon: https://pypi.org/project/minicons/
-textdescriptives: https://arxiv.org/abs/2301.02057
-benepar: https://pypi.org/project/benepar/
-(https://aclanthology.org/2025.naacl-long.277.pdf)
+Cong, Y., LaCroix, A. N., & Lee, J. (2024). Clinical efficacy of pre-trained large language models through the lens of aphasia. *Scientific reports*, 14(1), 15573. https://doi.org/10.1038/s41598-024-66576-y
+
+Fernández, C. (2011). Mindful storytellers: Emerging pragmatics and theory of mind development. First Language, 33(1), 20–46. https://doi.org/10.1177/0142723711422633
+
+Graesser, A. C., McNamara, D. S., Louwerse, M. M., & Cai, Z. (2004). Coh-metrix: analysis of text on cohesion and language. *Behavior research methods, instruments, & computers : a journal of the Psychonomic Society, Inc*, 36(2), 193–202. https://doi.org/10.3758/bf03195564 
+
+Hansen, L., Olsen, L. R., & Enevoldsen, K. (2023). TextDescriptives: A Python package for calculating alarge variety of metrics from text. The Journal of Open Source Software, 8(84), 5153. https://doi.org/10.21105/joss.05153
+
+Hoffman, P., Lambon Ralph, M. A., & Rogers, T. T. (2013). Semantic diversity: a measure of semantic ambiguity based on variability in the contextual usage of words. *Behavior research methods*, 45(3), 718–730. https://doi.org/10.3758/s13428-012-0278-x
+
+Hoffman, P., Loginova, E., & Russell, A. (2018). Poor coherence in older people’s speech is explained by impaired semantic and executive processes. eLife, 7. https://doi.org/10.7554/elife.38907
+
+Honnibal, M., & Johnson, M. (2015). An improved non-monotonic transition system for dependency parsing. In *Proceedings of the 2015 Conference on Empirical Methods in Natural Language Processing*. Association for Computational Linguistics. https://aclanthology.org/D15-1162/
+
+Litovsky, C. P., Finley, A. M., Zuckerman, B., Sayers, M., Schoenhard, J. A., Kenett, Y. N., & Reilly, J. (2022). Semantic flow and its relation to controlled semantic retrieval deficits in the narrative production of people with aphasia. *Neuropsychologia*, 170, 108235. https://doi.org/10.1016/j.neuropsychologia.2022.108235
+
+Maimon, A., & Tsarfaty, R. (2025). A novel computational modeling foundation for automatic coherence assessment. In Association for Computational Linguistics, Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Vols. 1–Long Papers, pp. 5359–5377) [Conference-proceeding]. https://aclanthology.org/2025.naacl-long.277.pdf
+
+Mikolov, T., Chen, K., Corrado, G., & Dean, J. (2013, January 16). Efficient estimation of word representations in vector space. arXiv.org. https://arxiv.org/abs/1301.3781
+
+Misra, K. (2022, March 24). minicons: Enabling Flexible Behavioral and Representational Analyses of Transformer Language Models. arXiv.org. https://arxiv.org/abs/2203.13112
+
+Pugalenthi, K. (2025). English Linguistic Pipeline Tutorial Guide [Unpublished code]. MADR Lab, University of Texas at Austin.
+
+Qi, P., Zhang, Y., Zhang, Y., Bolton, J., & Manning, C. D. (2020, March 16). Stanza: a Python natural language processing toolkit for many human languages. arXiv.org. https://arxiv.org/abs/2003.07082
+
+Rezaii, N., Michaelov, J., Josephy-Hernandez, S., Ren, B., Hochberg, D., Quimby, M., & Dickerson, B. C. (2023). Measuring Sentence Information via Surprisal: Theoretical and Clinical Implications in Nonfluent Aphasia. *Annals of neurology*, 94(4), 647–657. https://doi.org/10.1002/ana.26744
